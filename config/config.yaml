@@ -31,6 +31,12 @@ generacion:
 cache:
   activa: true
   directorio: .cache/llm
+  directorio_embeddings: .cache/embeddings
+
+victima:
+  modelo_embeddings: nomic-embed-text
+  rag_k: 5                  # trozos recuperados por pregunta
+  max_pasos_herramientas: 4 # rondas de herramientas como máximo en cada turno
 
 # Defensas: cada una se activa por separado (fase 5).
 defensas:
