@@ -1,0 +1,46 @@
+# Configuración única del laboratorio. Todo lo que afecta a los resultados está aquí,
+# para que cualquier experimento se pueda repetir.
+
+# Modelo con el que se habla por defecto (víctima en la arena, juez, etc.).
+# Cambiar de modelo = cambiar esta línea.
+modelo: llama3.1:8b
+
+# Modelos que se comparan en la evaluación. Tres familias distintas, todas en local con Ollama
+# y cuantizadas para caber en 8 GB de VRAM.
+modelos:
+  llama3.1:8b:
+    familia: llama
+  qwen3.5:
+    familia: qwen
+    # Qwen 3.5 tiene modo "thinking"; lo desactivamos para que sea comparable y más rápido.
+    think: false
+  mistral:
+    familia: mistral
+
+ollama:
+  host: http://localhost:11434
+  timeout_s: 180
+
+# Generación: fijada para que sea reproducible.
+generacion:
+  temperatura: 0.7
+  max_tokens: 512
+  # Cada ataque se repite con estas semillas y se cuenta la proporción de éxitos.
+  semillas: [0, 1, 2, 3, 4]
+
+cache:
+  activa: true
+  directorio: .cache/llm
+
+# Defensas: cada una se activa por separado (fase 5).
+defensas:
+  prompt_reforzado: false
+  spotlighting: false
+  filtro_entrada: false
+  filtro_salida: false
+  permisos_herramientas: false
+
+rutas:
+  ataques: attacks
+  datos: data
+  informes: reports

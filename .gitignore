@@ -1,0 +1,18 @@
+CLAUDE.md
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Secretos
+.env
+
+# Caché de respuestas de los modelos (se regenera con make attack / evaluate)
+.cache/
+
+# Informes: solo se versionan los resúmenes pequeños (ver reports/)
+reports/**/conversaciones_completas/
